@@ -105,7 +105,7 @@ const CustomWheel = () => {
         style={{ display: "flex", justifyContent: "center", width: "100%" }}
         className="button"
       >
-        SPIN TO WIN
+        Spin 2 Win
       </button>
       <CustomModal
         closeModal={() => {

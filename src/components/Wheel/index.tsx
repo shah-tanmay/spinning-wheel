@@ -29,7 +29,7 @@ const CustomWheel = () => {
   const [complete, setComplete] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [playSpinSound] = useSound(SpinningSound);
-  const [playCheeringSound] = useSound(CheeringSound);
+  const [playCheeringSound, { stop }] = useSound(CheeringSound);
 
   useEffect(() => {
     if (localStorage.getItem("counter") === null) {
@@ -44,10 +44,6 @@ const CustomWheel = () => {
   useEffect(() => {
     setTimeout(() => setComplete(false), 3000);
   }, [complete]);
-
-  useEffect(() => {
-    setTimeout(() => setIsOpen(false), 3000);
-  }, [isOpen]);
 
   const getPriceNumber = (priceMoney: number) => {
     if (priceMoney === 500) return 4;
@@ -65,6 +61,8 @@ const CustomWheel = () => {
       alert("50 spins over");
       return;
     }
+    playSpinSound();
+    setIsOpen(false);
     const index = randomInteger();
     const priceMoney = priceMoneyArray[index];
     priceMoneyArray.splice(index, 1);
@@ -84,14 +82,7 @@ const CustomWheel = () => {
   };
   return (
     <div>
-      <Confetti numberOfPieces={complete ? 500 : 0} />
-      {complete && (
-        <h1
-          style={{ display: "flex", justifyContent: "center", width: "100%" }}
-        >
-          You won ₹{getPriceMoneyFromPriceNumber()}
-        </h1>
-      )}
+      <Confetti numberOfPieces={isOpen ? 500 : 0} />
       <div style={isOpen ? { zIndex: "-10", position: "relative" } : {}}>
         <Wheel
           mustStartSpinning={spin}
@@ -110,15 +101,17 @@ const CustomWheel = () => {
       <button
         onClick={() => {
           getPriceMoney();
-          playSpinSound();
         }}
         style={{ display: "flex", justifyContent: "center", width: "100%" }}
         className="button"
       >
-        Click to Spin
+        SPIN TO WIN
       </button>
       <CustomModal
-        closeModal={() => setIsOpen(false)}
+        closeModal={() => {
+          setIsOpen(false);
+          stop();
+        }}
         isOpen={isOpen}
         price={getPriceMoneyFromPriceNumber()!}
       />

@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import "../Wheel/index.css";
 
 const customStyles = {
   content: {
@@ -30,6 +31,11 @@ const CustomModal = ({
       <h2 style={{ display: "flex", justifyContent: "center" }}>
         You have won ₹{price}
       </h2>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <button onClick={closeModal} className="button">
+          OK
+        </button>
+      </div>
     </Modal>
   );
 };

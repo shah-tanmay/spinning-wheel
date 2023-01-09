@@ -81,7 +81,7 @@ const CustomWheel = () => {
     if (priceNumber === 4) return 500;
   };
   return (
-    <div>
+    <div style={{ marginTop: "205px" }}>
       <Confetti numberOfPieces={isOpen ? 500 : 0} />
       <div style={isOpen ? { zIndex: "-10", position: "relative" } : {}}>
         <Wheel
@@ -98,15 +98,29 @@ const CustomWheel = () => {
           fontSize={30}
         />
       </div>
-      <button
-        onClick={() => {
-          getPriceMoney();
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
-        style={{ display: "flex", justifyContent: "center", width: "100%" }}
-        className="button"
       >
-        Spin 2 Win
-      </button>
+        <button
+          onClick={() => {
+            getPriceMoney();
+          }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            // width: "100%",
+            width: "316px",
+            alignItems: "center",
+          }}
+          className="button"
+        >
+          Spin 2 Win
+        </button>
+      </div>
       <CustomModal
         closeModal={() => {
           setIsOpen(false);

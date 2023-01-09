@@ -67,8 +67,8 @@ const CustomWheel = () => {
     const priceMoney = priceMoneyArray[index];
     priceMoneyArray.splice(index, 1);
     const priceNumber = getPriceNumber(priceMoney);
-    setPriceNumber(priceNumber!);
     setSpin(true);
+    setPriceNumber(priceNumber!);
     localStorage.setItem("counter", (50 - priceMoneyArray.length).toString());
     localStorage.setItem("prizeMoney", JSON.stringify(priceMoneyArray));
   };
@@ -117,6 +117,7 @@ const CustomWheel = () => {
             alignItems: "center",
           }}
           className="button"
+          disabled={spin}
         >
           Spin 2 Win
         </button>

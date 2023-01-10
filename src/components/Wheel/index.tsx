@@ -112,7 +112,6 @@ const CustomWheel = () => {
           style={{
             display: "flex",
             justifyContent: "center",
-            // width: "100%",
             width: "316px",
             alignItems: "center",
           }}
@@ -133,5 +132,7 @@ const CustomWheel = () => {
     </div>
   );
 };
+
+
 
 export default CustomWheel;

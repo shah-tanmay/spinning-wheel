@@ -81,9 +81,12 @@ const CustomWheel = () => {
     if (priceNumber === 4) return 500;
   };
   return (
-    <div style={{ marginTop: "205px" }}>
+    <div style={{ marginTop: "180px" }}>
       <Confetti numberOfPieces={isOpen ? 500 : 0} />
-      <div style={isOpen ? { zIndex: "-10", position: "relative" } : {}}>
+      <div
+        style={isOpen ? { zIndex: "-10", position: "relative" } : {}}
+        className="wheel-container"
+      >
         <Wheel
           mustStartSpinning={spin}
           prizeNumber={priceNumber}
@@ -132,7 +135,5 @@ const CustomWheel = () => {
     </div>
   );
 };
-
-
 
 export default CustomWheel;
